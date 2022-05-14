@@ -37,7 +37,7 @@ public class ConnectionUtility {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver"); // com.mysql.jdbc.Driver
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javatraining", "cruduser", "crudpwd");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Classroom", "root", "CocoPowder");
 		} catch (Exception e) {
 			throw new IllegalStateException("Exception while creating exception ...", e);
 		}
