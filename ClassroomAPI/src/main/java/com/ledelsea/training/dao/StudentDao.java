@@ -1,10 +1,6 @@
 package com.ledelsea.training.dao;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -67,6 +63,40 @@ public class StudentDao {
 			ConnectionUtility.getInstance().close(con);
 		}
 		return studentList;
+	}
+
+	public boolean delete(long studentId) {
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = ConnectionUtility.getInstance().getConnection();
+			stmt = con.createStatement();
+//			stmt.executeUpdate("DELETE from student [WHERE ID = studentId]");
+			rs = stmt.executeQuery("DELETE from student [WHERE ID = `" + studentId + "`]");
+
+
+			while (rs.next()) {
+				// TODO Switch to log4j from sout
+				System.out.println("Deleting a Student by id:" + studentId);
+				System.out.println("First Name = " + rs.getString("FIRST_NM"));
+				System.out.println("Last Name = " + rs.getString("LAST_NM"));
+				System.out.println("Address = " + rs.getString("ADDRESS"));
+				System.out.println("City = " + rs.getString("CITY"));
+				System.out.println("State = " + rs.getString("STATE"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			ConnectionUtility.getInstance().close(rs);
+			ConnectionUtility.getInstance().close(stmt);
+			ConnectionUtility.getInstance().close(con);
+		}
+
+		return true;
 	}
 
 }
