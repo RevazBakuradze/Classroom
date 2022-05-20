@@ -63,6 +63,7 @@ public class StudentService {
 	}
 
 	public static void addNewStudent(Scanner scanner) {
+		// TODO add filter to the user input
 
 		StudentService service = new StudentService();
 		Student student = new Student();
