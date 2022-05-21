@@ -43,8 +43,6 @@ public class StudentDao {
 		try {
 			con = ConnectionUtility.getInstance().getConnection();
 			stmt = con.createStatement();
-
-			// TODO Should I put `` around Query names?
 			rs = stmt.executeQuery("select ID, FIRST_NM,LAST_NM,ADDRESS,CITY,`STATE` from STUDENT");
 
 			while (rs.next()) {
@@ -76,6 +74,7 @@ public class StudentDao {
 			con = ConnectionUtility.getInstance().getConnection();
 			stmt = con.createStatement();
 //			stmt.executeUpdate("DELETE from student [WHERE ID = studentId]");
+			// TODO Should I put `` around Query names?
 			rs = stmt.executeQuery("DELETE from student [WHERE ID = `" + id + "`]");
 
 
