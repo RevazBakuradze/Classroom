@@ -43,8 +43,9 @@ public class StudentDao {
 		try {
 			con = ConnectionUtility.getInstance().getConnection();
 			stmt = con.createStatement();
-			
-			rs = stmt.executeQuery("select ID, FIRST_NM,LAST_NM,ADDRESS,CITY,STATE from STUDENT");
+
+			// TODO Should I put `` around Query names?
+			rs = stmt.executeQuery("select ID, FIRST_NM,LAST_NM,ADDRESS,CITY,`STATE` from STUDENT");
 
 			while (rs.next()) {
 				Student student = new Student();
