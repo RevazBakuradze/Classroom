@@ -65,6 +65,7 @@ public class StudentDao {
 		return studentList;
 	}
 
+	// TODO Check if entry exists
 	public boolean delete(long id) {
 		Connection con = null;
 		Statement stmt = null;
@@ -100,6 +101,7 @@ public class StudentDao {
 		return true;
 	}
 
+	// TODO check if student exists
 	public boolean update(long id, Student student) {
 
 		Connection con = null;
@@ -114,7 +116,7 @@ public class StudentDao {
 					"LAST_NM = `" + student.getLastName() + "`, " +
 					"ADDRESS = `" + student.getAddress() + "`, " +
 					"CITY = `" + student.getCity() + "`, " +
-					"STATE = `" + student.getState() + "`, " +
+					"`STATE` = `" + student.getState() + "`, " +
 					"[WHERE ID = `" + student.getId() + "`]";
 
 			con = ConnectionUtility.getInstance().getConnection();
